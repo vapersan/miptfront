@@ -5,12 +5,16 @@
  * usage:
  * this.$feeapi.method();
  **/
-import axios  from 'axios';
+import axios from 'axios';
+
 const HTTP = axios.create({
   baseURL: 'http://127.0.0.1:8000/api/'
 });
 
 function rawHttp(url, method, params, onSuccess, onError) {
+  if (onError === null) {
+    onError = (e) => console.log('error: ' + e);
+  }
   if (method === 'POST') {
     HTTP.post(url, params).then(function (response) {
       onSuccess(response.data);
@@ -84,6 +88,19 @@ export const feeapi = {
      */
     changeStatus: function (id, status, onSuccess = null, onError = null) {
       rawHttp(`feedback/${id}/`, 'PUT', {'status': status}, onSuccess, onError);
+    }
+  },
+  /**
+   * Ежемесячный тест
+   */
+  monthly: {
+    /**
+     * Вернёт форму для заполнения голосования за месяц
+     * @param onSuccess функция которая будет вызванная при успешном запросе
+     * @param onError функция которая будет вызванная при не успешном запросе
+     */
+    getForm: function (onSuccess = null, onError = null) {
+      rawHttp(`get-monthly-event/`, 'GET', {}, onSuccess, onError);
     }
   }
 };

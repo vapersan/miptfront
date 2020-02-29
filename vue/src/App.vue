@@ -2,7 +2,7 @@
   <div id="app" class="body-container">
     <navBar/>
     <hBody/>
-    <subForm/>
+    <monthly/>
   </div>
 </template>
 
@@ -10,14 +10,14 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
   import navBar from "@/components/navbar";
-  import subForm from "@/components/formSub";
+  import monthly from "./components/monthly";
   import hBody from "@/components/h-body";
 
 
 export default {
   name: 'App',
   components: {
-    navBar, subForm, hBody
+    navBar, monthly, hBody
     }
   }
 </script>
