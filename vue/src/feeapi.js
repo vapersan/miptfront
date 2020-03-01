@@ -101,6 +101,16 @@ export const feeapi = {
      */
     getForm: function (onSuccess = null, onError = null) {
       rawHttp(`get-monthly-event/`, 'GET', {}, onSuccess, onError);
+    },
+    /**
+     * Сохраняет ежемесячный опрос в бд
+     * ВНИМАНИЕ!! Сервер данные не проверяет
+     * @param data данные для сохранения
+     * @param onSuccess функция которая будет вызванная при успешном запросе
+     * @param onError функция которая будет вызванная при не успешном запросе
+     */
+    sendForm: function (data, onSuccess = null, onError = null) {
+      rawHttp(`save-monthly-event/`, 'POST', {'data': data}, onSuccess, onError);
     }
   }
 };
