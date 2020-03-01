@@ -62,7 +62,7 @@ export const feeapi = {
      * @param onError функция которая будет вызванная при не успешном запросе
      */
     filterByStatus: function (status, onSuccess = null, onError = null) {
-      rawHttp(`feedback/`, 'GET', {'status': status}, onSuccess, onError);
+      rawHttp(`feedback/?status=${status}`, 'GET', {'status': status}, onSuccess, onError);
     },
     /**
      * Вернёт все записи в БД
