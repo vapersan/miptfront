@@ -8,12 +8,14 @@
             <img class="arrow-nav" src="../../img/Arrow-nav.svg">
             <a class="nav-link" href=""><br>Отзывы об обучении<br><br></a>
         </div>
+
         <div class="mt-4">
             <div class="body-h">Отзывы об обучении</div>
         </div>
+
         <form class="form-b">
-            <button class="t-btn" type="button" v-on:click="proposedView">Предложенные</button>
-            <button class="t-btn" type="button" style="margin-left: 20px;" v-on:click="acceptReviews">Принятые</button>
+            <button class="t-btn active" type="button" id="proposedViewOn" v-on:click="proposedView">Предложенные</button>
+            <button class="t-btn" type="button" style="margin-left: 20px;" id="proposedViewOff" v-on:click="acceptReviews">Принятые</button>
         </form>
         <div class="b-table">
             <hr class="hr-table">
@@ -33,13 +35,16 @@
                         @refreshPage_accept="proposedView"
                         @refreshPage_proposed="acceptReviews"
             />
+<!--            <div class="page"-->
+
+<!--            />-->
         </div>
 
     </div>
 </template>
 
 <script>
-    import reviewRow from "@/components/review-row";
+    import reviewRow from "@/components/a-review-row";
 
     export default {
         name: "a-review",
@@ -67,12 +72,16 @@
                     this.infos = r;
                 }, (e) => console.log(e));
                 this.onProposed=true;
+                document.getElementById('proposedViewOn').classList.add('t-btn-focus');
+                document.getElementById('proposedViewOff').classList.remove('t-btn-focus');
             },
             acceptReviews(){
                 this.$feeapi.feedback.filterByStatus(1,(r)=>{
                     this.infos = r;
                 }, (e) => console.log(e));
                 this.onProposed=false;
+                document.getElementById('proposedViewOff').classList.add('t-btn-focus');
+                document.getElementById('proposedViewOn').classList.remove('t-btn-focus');
             },
         },
         // mounted() {
@@ -94,9 +103,13 @@
         transition: 0.1s;
         background: #FFFFFF;
     }
-    .nav-link:hover{
+    .t-btn-focus{
         background-color: #47B0E6;
         color: white;
     }
 
+    .page{
+        padding: 8px 12px;
+        border: 1px solid rgba(0, 0, 0, 0.42);
+    }
 </style>

@@ -4,11 +4,11 @@
         <div class="nav-links">
             <a class="nav-link" href="" v-on:click="onAuth"><br>Авторизация<br><br></a>
             <img class="arrow-nav" src="../../img/Arrow-nav.svg">
-            <a class="nav-link" href="#"><br>Администрирование<br><br></a>
+            <a class="nav-link" href="#"><br>Личный кабинет<br><br></a>
         </div>
         <div class="admin">
-            <button class="t-btn" type="button" v-on:click="redirectOnReview">Отзывы об обучении</button>
-            <button class="t-btn" type="button" style="margin-left: 20px;" v-on:click="redirectOnPolls">Опросы</button>
+            <button class="t-btn" type="button" v-on:click="redirectOnReview">Отзыв об обучении</button>
+            <button class="t-btn" type="button" style="margin-left: 20px;" v-on:click="redirectOnPolls">Пройти опрос</button>
         </div>
     </div>
 </template>
@@ -18,10 +18,10 @@
         name: "admin",
         methods:{
             redirectOnReview(){
-                this.$router.push('a-review');
+                this.$router.push('review');
             },
             redirectOnPolls(){
-                this.$router.push('a-monthly');
+                this.$router.push('monthly');
             },
             onAuth(){
                 this.$router.push('/');

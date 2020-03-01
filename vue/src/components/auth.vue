@@ -24,7 +24,7 @@
             onClickLogin: function () {
                 //TODO: check admin
                 if(this.inputText === "user"){
-                    this.$router.push("review");
+                    this.$router.push("user");
                 }else if(this.inputText === "admin"){
                     this.$router.push("admin");
                 }

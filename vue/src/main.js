@@ -3,10 +3,12 @@ import App from './App.vue'
 import {feeapi} from '@/feeapi.js';
 import VueRouter from 'vue-router';
 import routes from './routes';
+import BootstrapVue from "bootstrap-vue";
 
 Object.defineProperty(Vue.prototype, '$feeapi', {value: feeapi});
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
+Vue.use(BootstrapVue);
 const router = new VueRouter({
     mode: 'history',
     routes: routes,

@@ -1,7 +1,8 @@
 <template>
     <div id='app'>
         <navbar/>
-        <router-view/>
+        <router-view
+        />
     </div>
 </template>
 
@@ -108,7 +109,7 @@
     }
 
     .hr-table {
-        background: black;
+        background: rgba(0, 0, 0, 0.42);
     }
 
     .header-t {
@@ -116,7 +117,7 @@
         display: flex;
         justify-content: space-around;
         padding: 12px 16px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
         font-size: 18px;
         align-items: center;
         animation-duration: 0.2s;
@@ -141,6 +142,11 @@
 
     .h-flex2 {
         flex-basis: 32%;
+    }
+
+    .nav-link:hover{
+        background-color: #47B0E6;
+        color: white;
     }
 
 </style>

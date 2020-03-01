@@ -29,7 +29,7 @@
 
 <script>
     export default {
-        name: "review-row",
+        name: "a-review-row",
         props:{
             id: {type: Number},
             date: {type: String},

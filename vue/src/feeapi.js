@@ -7,7 +7,7 @@
  **/
 import axios  from 'axios';
 const HTTP = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/'
+  baseURL: 'https://dragonica-mercy.online/api/'
 });
 
 function rawHttp(url, method, params, onSuccess, onError) {
@@ -84,6 +84,34 @@ export const feeapi = {
      */
     changeStatus: function (id, status, onSuccess = null, onError = null) {
       rawHttp(`feedback/${id}/`, 'PUT', {'status': status}, onSuccess, onError);
+    }
+  },
+  monthly: {
+    /**
+     * Вернёт форму для заполнения голосования за месяц
+     * @param onSuccess функция которая будет вызванная при успешном запросе
+     * @param onError функция которая будет вызванная при не успешном запросе
+     */
+    getForm: function (onSuccess = null, onError = null) {
+      rawHttp(`get-monthly-event/`, 'GET', {}, onSuccess, onError);
+    },
+    /**
+     * Сохраняет ежемесячный опрос в бд
+     * ВНИМАНИЕ!! Сервер данные не проверяет
+     * @param data данные для сохранения
+     * @param onSuccess функция которая будет вызванная при успешном запросе
+     * @param onError функция которая будет вызванная при не успешном запросе
+     */
+    sendForm: function (data, onSuccess = null, onError = null) {
+      rawHttp(`save-monthly-event/`, 'POST', {'data': data}, onSuccess, onError);
+    },
+    /***
+     * Получает полную информацию об отзыве
+     * @param onSuccess функция которая будет вызванная при успешном запросе
+     * @param onError функция которая будет вызванная при не успешном запросе
+     */
+    getAdminInfo: function (onSuccess = null, onError = null) {
+      rawHttp(`monthly-get-admin-info/`, 'GET', {}, onSuccess, onError);
     }
   }
 };
