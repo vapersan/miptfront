@@ -111,6 +111,14 @@ export const feeapi = {
      */
     sendForm: function (data, onSuccess = null, onError = null) {
       rawHttp(`save-monthly-event/`, 'POST', {'data': data}, onSuccess, onError);
+    },
+    /***
+     * Получает полную информацию об отзыве
+     * @param onSuccess функция которая будет вызванная при успешном запросе
+     * @param onError функция которая будет вызванная при не успешном запросе
+     */
+    getAdminInfo: function (onSuccess = null, onError = null) {
+      rawHttp(`monthly-get-admin-info/`, 'GET', {}, onSuccess, onError);
     }
   }
 };

@@ -2,7 +2,7 @@
   <div id="app" class="body-container">
     <navBar/>
     <hBody/>
-    <monthly/>
+    <monthly_admin/>
   </div>
 </template>
 
@@ -10,14 +10,14 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
   import navBar from "@/components/navbar";
-  import monthly from "./components/monthly";
+  import monthly_admin from "./components/monthly-admin";
   import hBody from "@/components/h-body";
 
 
 export default {
   name: 'App',
   components: {
-    navBar, monthly, hBody
+    navBar, monthly_admin, hBody
     }
   }
 </script>
