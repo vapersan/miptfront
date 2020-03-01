@@ -33,6 +33,7 @@
                 </div>
             </div>
             <input type="submit" class="t-btn ml-4" value="Отправить!">
+            <img src="../../img/done.svg" style="margin-right: 4px" v-if="is_success" class="done alertS">
         </form>
     </div>
 
@@ -44,7 +45,8 @@
         data: function () {
             return {
                 kek: "kek",
-                formData: [{'pk': 0, 'text': "", 'quests': []}]
+                formData: [{'pk': 0, 'text': "", 'quests': []}],
+                is_success: false
             }
         },
         methods: {
@@ -57,6 +59,8 @@
                     to_send[value] = key
                 });
                 this.$feeapi.monthly.sendForm(to_send, (r) => {
+                    this.is_success = true;
+                    setTimeout(()=> this.is_success=false,2000);
                     console.log(r);
                 });
             },
@@ -86,7 +90,7 @@
     }
     .flex-cont{
         display: inline-flex;
-        border: 1px solid rgba(0, 0, 0, 0.45);
+
     }
     .left{
         display: inline-flex;
@@ -104,7 +108,7 @@
         font-size: 14px;
     }
     .pText{
-        border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+        border-bottom: 1px solid #47B0E6;
         margin: 20px 0;
     }
     .t-btn {
@@ -122,5 +126,22 @@
         transition: 0.1s;
         color: white;
         background: #47B0E6;
+    }
+    .done{
+        margin-left: 10px;
+        animation-duration: 2s;
+        animation-name: slideOut;
+    }
+    .alertS{
+        display: inline-block;
+        align-content: center;
+    }
+    @keyframes slideOut {
+        from{
+            opacity: 100%;
+        }
+        to{
+            opacity: 0%;
+        }
     }
 </style>

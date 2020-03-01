@@ -16,7 +16,7 @@
         <div v-for="info in Data" :key="info.pk">
             {{info.text}}
             <div v-for="all in info.answers" :key="all">
-                <span v-for="subinfo in all" :key="subinfo">{{subinfo}}, </span>
+                <span v-for="subinfo in all" :key="subinfo">{{subinfo + ", "}}</span>
             </div>
         </div>
         <!--        {{Data}}-->
